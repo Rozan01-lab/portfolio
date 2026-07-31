@@ -27,7 +27,7 @@
         <p class="preloader-text">Growing something big<span class="dots">...</span></p>
     </div>
 
-    <header>
+    <header id="mainHeader">
         <ul class="header-ul">
             <div class="links">
                 <li>
@@ -37,16 +37,16 @@
                 </li>
                 <div class="nav-links-mobile" id="navLinksMobile">
                     <li>
-                        <a class="header-a" href="index.html">Home</a>
+                        <a class="header-a nav-link active" href="index.html" data-section="home">Home</a>
                     </li>
                     <li>
-                        <a class="header-a" href="#about">about</a>
+                        <a class="header-a nav-link" href="#about" data-section="about">about</a>
                     </li>
                     <li>
-                        <a class="header-a" href="#contact">contact</a>
+                        <a class="header-a nav-link" href="#contact" data-section="contact">contact</a>
                     </li>
                     <li>
-                        <a class="header-a" href="#skills">skills</a>
+                        <a class="header-a nav-link" href="#skills" data-section="skills">skills</a>
                     </li>
                 </div>
             </div>
@@ -68,30 +68,51 @@
         </ul>
         
     </header> <!--header-end-here-->
-    <section class="main">
+    <section class="main" id="home">
         <div class="main-2">
             <div class="badge">
                 Hello! I am Chitrangna
             </div>
             <h1 class="main-h1">
-                Building beautiful and impactful web experiences.
+                Building modern, responsive web experiences.
             </h1>
-            <p class="main-p">
-                Frontend Developer & Future Startup Founder.
+            <p class="main-p" id="typingText"><span class="typing-word"></span></p>
+            <p class="main-desc">
+                Currently learning the MERN Stack and creating projects that
+                combine clean UI with practical functionality.
             </p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <span>Projects</span>
+                </div>
+                <div class="stat-item">
+                    <h3>6+</h3>
+                    <span>Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <span>Responsive</span>
+                </div>
+            </div>
+
             <div class="social-icons">
-               <a href="#">
+                <a href="https://linkedin.com/in/chitrangna-885abb413" target="_blank" aria-label="LinkedIn">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
-                <a href="#">
+
+                 <a href="https://github.com/chitrangna-dev" target="_blank" aria-label="GitHub">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="#">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="#">
+
+                <a href="mailto:chitrangna@gmail.com" aria-label="Email">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
+                <a href="https://x.com/chitrangna" target="_blank" aria-label="Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                
             </div>
         </div><!--main-2-end-here-->
         <div class="my-image">
@@ -163,7 +184,7 @@
         <div class="project-card">
             <h3>ABESIT Assistant Bot</h3>
             <p>
-                A smart college assistant bot developed using Python.
+             A Telegram-based college assistant bot built with Node.js that helps ABESIT students with daily coding tasks, progress tracking, leaderboards, announcements, and community engagement.
             </p>
             <button class="project-btn">View Project</button>
         </div>
@@ -294,15 +315,15 @@
 
         <div class="footer-socials">
 
-            <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">
+            <a href="https://linkedin.com/in/chitrangna-885abb413" target="_blank">
                 <i class="fa-brands fa-linkedin-in"></i>
             </a>
 
-            <a href="https://github.com/YOUR-GITHUB" target="_blank">
+            <a href="https://github.com/chitrangna-dev" target="_blank">
                 <i class="fa-brands fa-github"></i>
             </a>
 
-            <a href="mailto:youremail@gmail.com">
+            <a href="mailto:chitrangna@gmail.com">
                 <i class="fa-solid fa-envelope"></i>
             </a>
 
@@ -386,6 +407,80 @@ document.addEventListener("click", (e) => {
         buttonsMenu.classList.remove("show");
     }
 });
+
+// ---- Navbar: scroll blur + shadow ----
+const mainHeader = document.getElementById("mainHeader");
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 40){
+        mainHeader.classList.add("scrolled");
+    } else {
+        mainHeader.classList.remove("scrolled");
+    }
+});
+
+// ---- Navbar: active section highlight (scrollspy) ----
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = Array.from(navLinks)
+    .map(link => document.getElementById(link.dataset.section))
+    .filter(Boolean);
+
+function setActiveLink(id){
+    navLinks.forEach(link => {
+        link.classList.toggle("active", link.dataset.section === id);
+    });
+}
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            setActiveLink(entry.target.id);
+        }
+    });
+}, {
+    root: null,
+    rootMargin: "-45% 0px -45% 0px", // section counts as "active" once it crosses the middle of the screen
+    threshold: 0
+});
+
+sections.forEach(section => sectionObserver.observe(section));
+
+// ---- Typing animation: cycles through roles, below the "Building..." heading ----
+const typingWords = ["Frontend Developer", "Future Startup Founder"];
+const typingEl = document.querySelector(".typing-word");
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeLoop(){
+    const currentWord = typingWords[wordIndex];
+
+    if(!isDeleting){
+        charIndex++;
+        typingEl.textContent = currentWord.slice(0, charIndex);
+
+        if(charIndex === currentWord.length){
+            isDeleting = true;
+            setTimeout(typeLoop, 1400); // pause on full word before deleting
+            return;
+        }
+    } else {
+        charIndex--;
+        typingEl.textContent = currentWord.slice(0, charIndex);
+
+        if(charIndex === 0){
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % typingWords.length;
+        }
+    }
+
+    setTimeout(typeLoop, isDeleting ? 45 : 90);
+}
+
+if(typingEl){
+    typeLoop();
+}
 
 </script>
 
