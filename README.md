@@ -3,7 +3,6 @@
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 
 <p align="center">
 My personal developer portfolio — showcasing who I am, what I'm building, and the projects I've shipped so far as a first-year CSE student on the MERN stack journey. Built with a focus on clean UI, smooth animations, and responsive design.
@@ -29,23 +28,24 @@ My personal developer portfolio — showcasing who I am, what I'm building, and 
 
 ##  Features
 
-- Custom preloader animation with a constellation-orbit design (Font Awesome icons)
-- Fully responsive layout — built mobile-first with Flexbox & Grid
-- About section with my journey, goals, and current tech stack
+- Custom SVG preloader with a tree-growth draw animation (trunk → branches → leaves)
+- Glassmorphic mobile navbar with a toggle-driven dropdown menu
+- Typing-effect intro text in the hero section
+- About section with profile image, highlight chips, and resume download
 - Projects section showcasing my work (Calculator, BMI Calculator, Counter App, Triangle Type Checker, and more)
-- Skills section with a clean, organized tech stack display
-- Smooth scroll navigation and section transitions
-- Social links (GitHub, LinkedIn) for easy connect
-- Dark, minimal aesthetic tuned for readability and focus
+- Skills section with animated gradient heading and interactive skill cards
+- Contact section with a working form layout
+- Scroll-to-top button and smooth scroll navigation
+- Fully responsive — built with Flexbox & Grid, tuned for mobile breakpoints
+- Ambient floating glow accents for a soft, layered visual feel
 
 ---
 
 ##  Built With
 
 - HTML5
-- CSS3 (Flexbox, Grid, Media Queries)
+- CSS3 (Flexbox, Grid, Media Queries, Animations)
 - JavaScript (ES6)
-- React
 
 ---
 
@@ -61,17 +61,7 @@ Move into the project folder:
 cd portfolio
 ```
 
-Install dependencies (if using React):
-```bash
-npm install
-```
-
-Run the project locally:
-```bash
-npm start
-```
-
-Or, if it's a static HTML/CSS/JS build, just open `index.html` in your preferred web browser.
+Open `index.html` in your preferred web browser.
 
 ---
 
