@@ -43,6 +43,9 @@
                         <a class="header-a nav-link" href="#about" data-section="about">about</a>
                     </li>
                     <li>
+                        <a class="header-a nav-link" href="projects.html">projects</a>
+                    </li>
+                    <li>
                         <a class="header-a nav-link" href="#contact" data-section="contact">contact</a>
                     </li>
                     <li>
@@ -181,6 +184,7 @@
                 <div class="project-thumb-fallback"><i class="fa-solid fa-code"></i></div>
                 <img src="project-portfolio.jpg" alt="Portfolio Website preview" loading="lazy" onerror="this.style.display='none'">
                 <span class="project-badge featured">Featured</span>
+                <span class="project-badge live" style="top:56px;"><i class="fa-solid fa-circle"></i> Live</span>
             </div>
             <div class="project-body">
                 <h3>Portfolio Website</h3>
@@ -215,15 +219,13 @@
             <div class="project-body">
                 <h3>ABESIT Assistant Bot</h3>
                 <p>
-                    A Python-based smart assistant that answers common student queries
-                    about schedules, faculty and campus resources instantly, cutting
-                    down repetitive manual support requests for the college community.
+                    A Node.js-based Telegram bot designed to provide useful utilities and interactive features for the ABESIT community. Built with JavaScript and Telegram Bot API, it includes command-based interactions, automated responses, and interactive features designed to make the bot engaging and practical.
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NODE.js</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://t.me/abesittbot" class="project-link live" target="_blank" rel="noopener">
+                    <a href=""https://t.me/ABESITBot" class="project-link live" target="_blank" rel="noopener">
                         <i class="fa-brands fa-telegram"></i> Open in Telegram
                     </a>
                     <a href="https://github.com/chitrangna-dev" class="project-link github" target="_blank" rel="noopener">
@@ -237,6 +239,7 @@
             <div class="project-thumb">
                 <div class="project-thumb-fallback"><i class="fa-solid fa-calculator"></i></div>
                 <img src="project-calculator.jpg" alt="Calculator App preview" loading="lazy" onerror="this.style.display='none'">
+                <span class="project-badge live"><i class="fa-solid fa-circle"></i> Live</span>
             </div>
             <div class="project-body">
                 <h3>Calculator App</h3>
@@ -264,8 +267,8 @@
     </div>
 
     <div class="view-all-wrap">
-        <a href="https://github.com/chitrangna-dev" class="view-all-btn" target="_blank" rel="noopener">
-            View All Projects <i class="fa-brands fa-github"></i>
+        <a href="projects.html" class="view-all-btn">
+            View All Projects <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
 
@@ -412,127 +415,7 @@
 <button id="topBtn">
     <i class="fa-solid fa-arrow-up"></i>
 </button>
-<script>
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if(window.scrollY > 300){
-        topBtn.style.display = "block";
-    }
-    else{
-        topBtn.style.display = "none";
-    }
-
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-});
-
-// ---- Preloader: tree growth animation before site reveals ----
-window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    setTimeout(() => {
-        preloader.classList.add("hide");
-        document.body.classList.remove("loading");
-    }, 3600); // naye slow animation ki total duration ke barabar (3.6s)
-});
-
-// ---- Mobile navbar toggle logic ----
-const logoLink = document.getElementById("logoLink");
-const navLinksMobile = document.getElementById("navLinksMobile");
-const menuToggle = document.getElementById("menuToggle");
-const buttonsMenu = document.getElementById("buttonsMenu");
-
-function isMobile(){
-    return window.innerWidth <= 768;
-}
-
-// logo tap -> toggle links dropdown (sirf mobile pe; desktop pe normal home link rahega)
-logoLink.addEventListener("click", (e) => {
-    if(isMobile()){
-        e.preventDefault();
-        navLinksMobile.classList.toggle("show");
-        buttonsMenu.classList.remove("show");
-    }
-});
-
-// right side icon tap -> toggle buttons dropdown
-menuToggle.addEventListener("click", () => {
-    buttonsMenu.classList.toggle("show");
-    navLinksMobile.classList.remove("show");
-});
-
-// bahar tap karne pe dono dropdown band ho jaye
-document.addEventListener("click", (e) => {
-    if(isMobile() && !e.target.closest(".header-ul")){
-        navLinksMobile.classList.remove("show");
-        buttonsMenu.classList.remove("show");
-    }
-});
-
-// ---- Navbar: scroll blur + shadow ----
-const mainHeader = document.getElementById("mainHeader");
-
-window.addEventListener("scroll", () => {
-    if(window.scrollY > 40){
-        mainHeader.classList.add("scrolled");
-    } else {
-        mainHeader.classList.remove("scrolled");
-    }
-});
-
-// ---- Navbar: active section highlight (scrollspy) ----
-const navLinks = document.querySelectorAll(".nav-link");
-const sections = Array.from(navLinks)
-    .map(link => document.getElementById(link.dataset.section))
-    .filter(Boolean);
-
-function setActiveLink(id){
-    navLinks.forEach(link => {
-        link.classList.toggle("active", link.dataset.section === id);
-    });
-}
-
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            setActiveLink(entry.target.id);
-        }
-    });
-}, {
-    root: null,
-    rootMargin: "-45% 0px -45% 0px", // section counts as "active" once it crosses the middle of the screen
-    threshold: 0
-});
-
-sections.forEach(section => sectionObserver.observe(section));
-
-// ---- Scroll reveal: fade/rise elements (About section photo + info card) into view ----
-const revealEls = document.querySelectorAll("[data-reveal]");
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("in-view");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.2
-});
-
-revealEls.forEach(el => revealObserver.observe(el));
-
-
-</script>
+<script src="script.js"></script>
 
     
     
