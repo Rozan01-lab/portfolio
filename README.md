@@ -9,9 +9,7 @@ My personal developer portfolio — a place to showcase my skills, projects, and
 </p>
 
 <p align="center">
-
 🌐 [Live Demo](https://chitrangna.netlify.app/)
-
 </p>
 
 ---
