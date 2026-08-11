@@ -5,11 +5,13 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
 <p align="center">
-My personal developer portfolio — showcasing who I am, what I'm building, and the projects I've shipped so far as a first-year CSE student on the MERN stack journey. Built with a focus on clean UI, smooth animations, and responsive design.
+My personal developer portfolio — a place to showcase my skills, projects, and growth as a developer. Built with a focus on clean UI, smooth animations, responsive design, and continuous learning.
 </p>
 
 <p align="center">
-  <strong><a href="https://chitrangna.netlify.app/">🌐 Live Demo</a></strong>
+
+🌐 [Live Demo](https://chitrangna.netlify.app/)
+
 </p>
 
 ---
@@ -34,7 +36,7 @@ My personal developer portfolio — showcasing who I am, what I'm building, and 
 - About section with profile image, highlight chips, and resume download
 - Projects section showcasing my work (Calculator, BMI Calculator, Counter App, Triangle Type Checker, and more)
 - Skills section with animated gradient heading and interactive skill cards
-- Contact section with a working form layout
+- Contact section with a clean, responsive form layout
 - Scroll-to-top button and smooth scroll navigation
 - Fully responsive — built with Flexbox & Grid, tuned for mobile breakpoints
 - Ambient floating glow accents for a soft, layered visual feel
@@ -44,24 +46,35 @@ My personal developer portfolio — showcasing who I am, what I'm building, and 
 ##  Built With
 
 - HTML5
-- CSS3 (Flexbox, Grid, Media Queries, Animations)
+- CSS3 — Flexbox, Grid, Media Queries & Animations
 - JavaScript (ES6)
+- Netlify — Deployment
 
 ---
 
 ## Getting Started
 
 Clone the repository:
+
 ```bash
 git clone https://github.com/chitrangna-dev/portfolio.git
 ```
 
 Move into the project folder:
+
 ```bash
 cd portfolio
 ```
 
 Open `index.html` in your preferred web browser.
+
+---
+
+## Deployment
+
+The portfolio is deployed on Netlify and connected to GitHub for streamlined deployment.
+
+🌐 Live Demo: [chitrangna.netlify.app](https://chitrangna.netlify.app/)
 
 ---
 
@@ -84,7 +97,9 @@ I built this portfolio to have a single place that represents me as a developer 
 ##  Author
 
 **Chitrangna**
-First-year B.Tech CSE student, building toward full-stack development with the MERN stack. Passionate about clean UI, meaningful projects, and continuous learning.
+
+First-year B.Tech CSE student building toward full-stack development with the MERN stack. Passionate about clean UI, meaningful projects, and continuous learning.
+
 Feel free to explore the project or share your feedback.
 
 ---
